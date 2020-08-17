@@ -1,0 +1,78 @@
+{
+  "name": "react_native_testes_e2e",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "e2e:test": "detox test -c --configuration android.emu.debug",
+    "e2e:test:release": "detox test -c --configuration android.emu.release",
+    "e2e:build:release": "detox build -c --configuration android.emu.release",
+    "e2e:build": "detox build -c --configuration android.emu.debug",
+    "e2e:ci": "npm run e2e:build:release && npm run e2e:test:release",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
+    "react": "16.13.1",
+    "react-native": "0.63.2",
+    "react-native-gesture-handler": "^1.7.0",
+    "react-native-reanimated": "^1.13.0",
+    "react-native-safe-area-context": "^3.1.4",
+    "react-native-screens": "^2.10.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@types/react": "^16.9.46",
+    "@types/react-native": "^0.63.8",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "babel-jest": "^25.1.0",
+    "detox": "^17.3.6",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "jest": "^26.4.0",
+    "jest-circus": "^26.4.0",
+    "jest-cli": "^26.4.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "mocha": "^8.1.1",
+    "prettier": "^2.0.5",
+    "react-test-renderer": "16.13.1",
+    "typescript": "^3.9.7"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "detox": {
+    "testRunner": "mocha",
+    "runnerConfig": "e2e/.mocharc.json",
+    "configurations": {
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "cd android && gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.emulator",
+        "device": {
+          "avdName": "NOME_EMULADOR"
+        }
+      },
+      "android.emu.release": {
+        "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+        "build": "cd android && gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+        "type": "android.emulator",
+        "device": {
+          "avdName": "NOME_EMULADOR"
+        }
+      }
+    }
+  }
+}
