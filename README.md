@@ -6,14 +6,14 @@ Projeto react native de exemplo que implementa testes end to end (E2E).
 
 ## Como começar
 
-Primeiramente é necessario fazer o clone do repositório, e seguir as
+Primeiramente é necessário fazer o clone do repositório, e seguir as
 instruções de instalação.
 
 ### Instalação
 
 Ao fazer o clone do projeto realize as instalações seguintes.
 
-Para instalar as dependencias do projeto execute no prompt de comando
+Para instalar as dependências do projeto execute no prompt de comando
 
 ```sh
 npm install
